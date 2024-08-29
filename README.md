@@ -17,7 +17,6 @@ Official code for "Temporal Event Stereo via Joint Learning with Stereoscopic Fl
   year    = {2024},
 }
 ```
-* denotes the equally contribution
 
 
 
