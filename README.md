@@ -1,6 +1,6 @@
 # Temporal Event Stereo via Joint Learning with Stereoscopic Flow (TESNet) (ECCV2024)
 <p align="center">
- <img src="resource/teaser.png" width="100%"/>
+ <img src="resource/teaser.png" width="90%"/>
 </p>
 
 
