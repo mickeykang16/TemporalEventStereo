@@ -70,8 +70,9 @@ The DSEC dataset should have the following format:
 
 We also pre-generate the voxel grid and raw events to prevent the repetitive calculation in dataloader.
 This can be done using the provided code in the processing directory with the following command:
-
+The raw events are only used in the training phase for contrast maximization loss.
 ```bash
-python processing/voxel_generate.py --dataset_path $DSEC_DATASET_PATH$
-python processing/voxel_generate_night.py --dataset_path $DSEC_NIGHT_DATASET_PATH$
+python raw_event_parsing.py --dataset_path $DSEC_TRAIN_DATASET_PATH$
+python voxel_generate_all.py --dataset_path $DSEC_TRAIN_DATASET_PATH$
+python voxel_generate_test_all.py --dataset_path $DSEC_TEST_DATASET_PATH$
 ```
