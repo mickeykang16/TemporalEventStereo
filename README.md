@@ -25,6 +25,8 @@ Event cameras are dynamic vision sensors inspired by the biological retina, char
 
 
 ## Datasets
+Please refer to the pre-processing directory () for the dataset's format and details.
+
 We utilize the pseudo dense label for stable training of temporal stereo. To make the pseudo label, we first train the single event stereo, which has the same backbone of temporal event stereo (TESNet), but does not use the temporal aggregation.
 
 ### MVSEC
