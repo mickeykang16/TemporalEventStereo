@@ -28,7 +28,7 @@ Event cameras are dynamic vision sensors inspired by the biological retina, char
 
 
 ## Datasets
-Please refer to the pre-processing directory ([pre-process](https://github.com/mickeykang16/TemporalEventStereo/tree/main/pre-processing)) for the dataset's format and details.
+Please refer to the pre-processing directory ([pre-process](https://github.com/mickeykang16/TemporalEventStereo/tree/master/pre-processing)) for the dataset's format and details.
 
 ## Installation
 ### Docker Environment
@@ -41,4 +41,7 @@ Comming Soon
 Comming Soon
 
 ## Testing
-We provide 
+We provide checkpoint and test code for DSEC dataset.
+```bash
+source infer_dsec.sh
+```
