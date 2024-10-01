@@ -1,0 +1,42 @@
+model:
+  epoch: 0 # to run test only, just set epoch to zero
+  type: ours_large
+  load_model: 'checkpoints/dsec_best.tar'
+  load_optim: False
+  load_strict: True
+  maxdisp: 192 # depth for model costvolume
+  eval_maxdisp: 192 # evaluation
+  height: 480
+  width: 640 
+  frame_idxs: range(-3, 1) # use four frames
+  use_prev_gradient: False
+  dataset: DSEC
+  dataset_raw_root_path: /home/data/dsec
+  dataset_root_path: /home/data/dsec
+  pseudo_root_path: /home/data/DSEC_pseudo_GT
+
+  orig_height: 480
+  orig_width: 640
+
+  # Load both voxel and raw event for contrast maximization loss
+  use_raw_provider: True
+  in_ch: 15
+  delta_t_ms: 50
+
+log:
+  log_train_every_n_batch: 40
+  save_test_every_n_batch: 100
+lr: 0.001
+train:
+  shuffle: True
+  gradient_accumulation: 0
+  batch_size: 4
+  num_worker: 16
+validation: 
+  shuffle: False
+  batch_size: 4
+  num_worker: 4
+test:
+  shuffle: False
+  batch_size: 1
+  num_worker: 4

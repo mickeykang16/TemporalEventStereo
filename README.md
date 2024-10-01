@@ -32,10 +32,13 @@ Please refer to the pre-processing directory ([pre-process](https://github.com/m
 
 ## Installation
 ### Docker Environment
-This project is based on cuda 11.1, python 3.8 and torch 1.10.1. Please refer to [Docker-env](https://github.com/mickeykang16/TemporalEventStereo/tree/main/docker) for more details.
+This project is based on cuda 11.1, python 3.8 and torch 1.10.1. Please refer to [docker setup](https://github.com/mickeykang16/TemporalEventStereo/tree/master/docker) for more details.
 ### Conda Environment
 Comming Soon
 
 
 ## Training
 Comming Soon
+
+## Testing
+We provide 

@@ -3,7 +3,7 @@ Follow the instructions here [Docker-install](https://docs.docker.com/desktop/in
 ## 2. Install NVIDIA Container Toolkit
 Follow the instructions here [NVIDIA-install](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 
-## 3. Go to the project path.
+## 3. Go to the project path
 ```bash
 cd {PATH_TO_THIS_PROJECT}/TemporalEventStereo
 ```

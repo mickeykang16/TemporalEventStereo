@@ -1,0 +1,51 @@
+model:
+  epoch: 60 # to run test only, just set epoch to 0
+  type: minihourglass_small_v6_3d_of_backwarp_rawcost_small_of_entropy_filter_new_flow
+  load_model: 'exps/mvsec_multiframe_ablation2/split1_minihourglass_small_v6_3d_of_backwarp_rawcost_small_of_entropy_filter_new_flow_8frame3/continue/checkpoint_61.tar'
+  # do_not_load_layer: ['dres4', 'classif3', 'of_block', 'fusion']
+  do_not_load_layer: []
+  load_strict: True 
+  load_optim: False # load optimizer state from checkpoint
+
+  maxdisp: 48 # depth for model costvolume
+  eval_maxdisp: 36 # depth for evaluation mask
+  # Size after padding
+  height: 288
+  width: 348 
+
+  # frame_idxs: [0]
+  frame_idxs: range(-7, 1) # <- this type of expression is allowed
+  skip_num: 1
+
+  use_prev_gradient: False
+  dataset: MVSEC
+  split: 1
+  dataset_root_path: /home/jaeyoung/ws/event_stereo_ICCV2019/dataset
+  use_pseudo_gt: True
+
+  use_disp_loss: True #default our loss
+
+  use_contrast_loss: True
+  flow_regul_weight: 0.01
+  contrast_flow_scale: 0.0
+  
+  use_stereo_loss: True #default for stereo True
+
+  orig_height: 260
+  orig_width: 346
+log:
+  log_train_every_n_batch: 100
+  save_test_every_n_batch: 1
+lr: 0.0008
+train:
+  shuffle: True
+  batch_size: 2
+  num_worker: 4
+validation: 
+  shuffle: False
+  batch_size: 4
+  num_worker: 4
+test:
+  shuffle: False
+  batch_size: 4
+  num_worker: 4

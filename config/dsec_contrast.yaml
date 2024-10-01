@@ -1,0 +1,79 @@
+model:
+  epoch: 60 # to run test only, just set epoch to zero
+  # type: minihourglass_small_v2_3d_of_backwarp_rawcost_small_of_channel
+  # type: stackhourglass_small_v2_3d_of_backwarp_rawcost_small_of_channel
+  # type: stackhourglass_3d_of_backwarp_rawcost_small_of_channel
+  type: stackhourglass_v2
+  # load_model: ''
+  load_model: 'exps/new_flow_dsec/dsec_stackhourglass_v2_single/checkpoint_24.tar'
+  # load_model: 'exps/stackhourglass_3d_of_backwarp_rawcost_small_of_channel_wo_cost_batch2/checkpoint_5.tar'
+  # do_not_load_layer: ['dres4', 'classif3', 'of_block', 'fusion']
+  # do_not_load_layer: ['of_block', 'fusion']
+  load_strict: True
+  remove_feat_first_weight : False
+  load_optim: False
+  pretrain_freeze: False
+  
+  maxdisp: 192 # depth for model costvolume
+  eval_maxdisp: 192 # 255 / 7.0 # depth for evaluation mask
+  height: 480
+  # width: 352
+  width: 640 # use for stackhourglass...
+  # width: 640 # use for minihourglass_...
+  # width: 384 # use for unet arch
+  # frame_idxs: [0, ]
+  frame_idxs: range(0, 1) # <- this type of expression is allowed
+  use_prev_gradient: False
+  dataset: DSEC
+  split: 1
+  # dataset_raw_root_path: /mnt2/DSEC_data
+  dataset_raw_root_path: /home/jaeyoung/data3/dsec
+  dataset_root_path: /home/jaeyoung/data3/dsec
+  pseudo_root_path: /home/jaeyoung/data3/DSEC_pseudo_GT_all
+  random_crop: False
+  crop_size: [336, 480]
+
+  use_pseudo_gt: True
+  use_disp_gt_mask: False
+  use_disp_flow_warp_mask: False
+  use_featuremetric_loss: False
+  use_disp_loss: True #default our loss
+  use_contrast_loss: False
+  use_stereo_loss: True #default for stereo True
+
+  use_mini_data: False
+  use_super_mini_data: False
+
+  flow_smooth_weight: 0.1
+  flow_scale: 1e-8
+  val_of_viz: False
+
+
+  orig_height: 480
+  orig_width: 640
+
+  use_raw_provider: True
+  in_ch: 15
+  delta_t_ms: 100
+
+  
+log:
+  log_train_every_n_batch: 40
+  save_test_every_n_batch: 1
+lr: 0.001
+train:
+  ann_path: view_4_train_v5_split1.json
+  shuffle: True
+  gradient_accumulation: 1
+  batch_size: 4
+  num_worker: 2
+validation: 
+  ann_path: view_4_test_v5_split1_all.json
+  shuffle: False
+  batch_size: 4
+  num_worker: 2
+test:
+  ann_path: view_4_test_v5_split1_all.json
+  shuffle: False
+  batch_size: 4
+  num_worker: 4
